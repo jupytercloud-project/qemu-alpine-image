@@ -1,0 +1,12 @@
+set timeout=0
+serial --unit=0 --speed=115200 --word=8 --parity=no --stop=1
+terminal_input  serial console 
+terminal_output serial console
+menuentry "Alpine Linux <%= ${ALPINE_RELEASE} %>" {
+ insmod part_gpt
+ insmod lvm
+ insmod xfs
+ set root=(<%= ${GRUB_LVM_ROOT} %>)
+ linux /boot/vmlinuz-virt root=<%= ${LVM_ROOT} %> rw modules=sd-mod,lvm,xfs quiet console=ttyS0 console=tty0
+ initrd /boot/initramfs-virt
+}
