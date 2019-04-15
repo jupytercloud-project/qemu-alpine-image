@@ -1,0 +1,14 @@
+esh
+bash
+parted
+grub
+grub-bios
+xfsprogs
+xfsprogs-extra
+lvm2
+sudo
+coreutils
+sed
+findutils
+util-linux
+jq
