@@ -23,5 +23,4 @@ jobs:
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
         name: Install tools
-
         command: brew install gcc packer qemu
