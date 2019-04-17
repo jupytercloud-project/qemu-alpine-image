@@ -33,4 +33,7 @@ jobs:
     - run:
         name: Building Image
         command: |
+          pwd
+          ls -alFh
+          ls -alFh ~
           rake packer:build:qemu-image-alpine
