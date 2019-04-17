@@ -32,5 +32,8 @@ jobs:
         no_output_timeout: 60m
         command: brew install packer
     - run:
+        name: Installing Ruby dependencies
+        command: bundle install
+    - run:
         name: Building Image
         command: rake packer:build:qemu-alpine-image
