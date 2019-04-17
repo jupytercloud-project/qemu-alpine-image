@@ -11,6 +11,7 @@ jobs:
     executor: vm
     shell: /bin/bash --login -eo pipefail 
     steps:
+    - checkout
     - run: lsb_release -a
     - run:
         name: Installing development tools
@@ -30,9 +31,6 @@ jobs:
         name: Installing packer
         no_output_timeout: 60m
         command: brew install packer
-    - run: pwd
-    - run: ls -alFh
-    - run: ls -alFhR ~
     - run:
         name: Building Image
         command: rake packer:build:qemu-alpine-image
