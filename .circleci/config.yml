@@ -16,5 +16,5 @@ jobs:
     - run : eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
     - run : echo $PATH
     - run : pwd
-    - run : ls -alFh
+    - run : ls -alFh ~
     - run : brew install gcc packer qemu
