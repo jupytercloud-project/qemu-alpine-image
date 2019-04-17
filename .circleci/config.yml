@@ -14,5 +14,7 @@ jobs:
     - run : sudo apt-get install build-essential
     - run : echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
     - run : eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    - run : echo $PATH
+    - run : pwd
+    - run : ls -alFh
     - run : brew install gcc packer qemu
-                
