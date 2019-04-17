@@ -10,4 +10,5 @@ jobs:
   build:
     executor: vm
     steps:
-    - run : sudo apt-get install qemu
+    - run : sudo apt-get install qemu packer
+                
