@@ -11,12 +11,12 @@ jobs:
     executor: vm
     shell: /bin/bash --login -eo pipefail 
     steps:
-    - run: uname -a
+    - run: lsb_release -a
     - run:
         name: Installing development tools
         command: sudo apt-get install build-essential
     - run:
-        name: Install Brew
+        name: Installing Brew
         command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
     - run:
         name: Add brew to the PATH
