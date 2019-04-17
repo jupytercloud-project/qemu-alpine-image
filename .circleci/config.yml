@@ -10,5 +10,5 @@ jobs:
   build:
     executor: vm
     steps:
-    - run : sudo apt-get install qemu packer
+    - run : sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
                 
