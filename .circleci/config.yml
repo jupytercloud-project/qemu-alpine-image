@@ -20,7 +20,6 @@ jobs:
         name: Add brew to the PATH
         command: |
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> $BASH_ENV
-          source /home/circleci/$BASH_ENV
     - run: echo $PATH
     - run: pwd
     - run: ls -alFh ~
