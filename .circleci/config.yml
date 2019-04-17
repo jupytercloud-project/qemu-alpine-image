@@ -10,4 +10,4 @@ jobs:
   build:
     executor: vm
     steps:
-    - run : apt-get install qemu
+    - run : sudo apt-get install qemu
