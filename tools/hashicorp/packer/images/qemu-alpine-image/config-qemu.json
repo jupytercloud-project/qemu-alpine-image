@@ -41,14 +41,14 @@
       "http_directory": "{{user `project_directory`}}/http",
 
       "boot_command": [
-        "<wait10>",
+        "<wait20>",
         "root<enter><wait>",
         "ifconfig eth0 up && udhcpc -i eth0<enter><wait5>",
         "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine-installer.sh -O - | sh -s -- '{{ user `tmp_size`}}' '{{ .HTTPIP }}:{{ .HTTPPort }}' '{{user `alpine_mirror`}}'<enter>"
       ],
 
       "communicator": "ssh",
-      "ssh_timeout": "10m",
+      "ssh_timeout": "20m",
       "ssh_username": "alpine",
       "ssh_password": "alpine",
 
