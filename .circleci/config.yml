@@ -22,6 +22,11 @@ jobs:
         command: |
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
-        name: Install tools
-        command: brew install gcc packer qemu
+        name: Installing qemu
+        command: brew install qemu
+        no_output_timeout: 60m
+    - run:
+        name: Installing packer
+        command: brew install packer
+        no_output_timeout: 60m
     - run: packer --help
