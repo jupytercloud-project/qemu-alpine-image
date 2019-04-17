@@ -11,4 +11,8 @@ jobs:
     executor: vm
     steps:
     - run : sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+    - run : sudo apt-get install build-essential
+    - run : echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+    - run : eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+    - run : brew install gcc packer qemu
                 
