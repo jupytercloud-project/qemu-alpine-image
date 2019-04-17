@@ -12,7 +12,7 @@ jobs:
     shell: /bin/bash --login -eo pipefail 
     steps:
     - run:
-        name: Install dev tools
+        name: Installing development tools
         command: sudo apt-get install build-essential
     - run:
         name: Install Brew
@@ -23,7 +23,7 @@ jobs:
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
         name: Installing qemu
-        command: apt-get install qemu
+        command: sudo apt-get install qemu
         no_output_timeout: 60m
     - run:
         name: Installing packer
