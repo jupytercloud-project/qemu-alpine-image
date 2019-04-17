@@ -14,13 +14,13 @@ jobs:
         name: Install dev tools
         command: sudo apt-get install build-essential
     - run:
-        name: Install LinuxBrew
+        name: Install Brew
         command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
     - run:
         name: Add brew to the PATH
         command: |
-          echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> $BASH_ENV
-    - run: echo $PATH
-    - run: pwd
-    - run: ls -alFh ~
-    - run: brew install gcc packer qemu
+          echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
+    - run:
+        name: Install tools
+        shell: /bin/bash -eo pipefail --login
+        command: brew install gcc packer qemu
