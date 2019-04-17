@@ -1,0 +1,13 @@
+version: 2.1
+
+executors:
+  vm:
+    machine:
+      enabled: true
+      image: circleci/classic:latest
+
+jobs:
+  build:
+    executor: vm
+    steps:
+    - run : apt-get install qemu
