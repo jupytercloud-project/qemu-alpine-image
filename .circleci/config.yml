@@ -14,6 +14,10 @@ jobs:
     - checkout
     - run: lsb_release -a
     - run:
+        name: Installing qemu
+        no_output_timeout: 60m
+        command: sudo apt-get install qemu
+    - run:
         name: Installing development tools
         command: sudo apt-get install build-essential
     - run:
@@ -24,10 +28,6 @@ jobs:
         command: |
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
-        name: Installing qemu
-        no_output_timeout: 60m
-        command: sudo apt-get install qemu
-    - run:
         name: Installing packer
         no_output_timeout: 60m
         command: brew install packer
@@ -35,5 +35,6 @@ jobs:
         name: Installing Ruby dependencies
         command: bundle install
     - run:
-        name: Building Image
+        name: Building the image
+        no_output_timeout: 60m
         command: rake packer:build:qemu-alpine-image
