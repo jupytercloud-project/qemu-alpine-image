@@ -11,16 +11,16 @@ jobs:
     executor: vm
     steps:
     - run:
-      name: Install dev tools
-      command: sudo apt-get install build-essential
+        name: Install dev tools
+        command: sudo apt-get install build-essential
     - run:
-      name: Install LinuxBrew
-      command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+        name: Install LinuxBrew
+        command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
     - run:
-      name: Add brew to the PATH
-      command: |
-        echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> $BASH_ENV
-        source /home/circleci/$BASH_ENV
+        name: Add brew to the PATH
+        command: |
+          echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> $BASH_ENV
+          source /home/circleci/$BASH_ENV
     - run: echo $PATH
     - run: pwd
     - run: ls -alFh ~
