@@ -22,5 +22,5 @@ jobs:
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
         name: Install tools
-        shell: /bin/bash -eo pipefail --login
+        shell: /bin/bash --login -eo pipefail 
         command: brew install gcc packer qemu
