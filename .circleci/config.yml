@@ -24,3 +24,4 @@ jobs:
     - run:
         name: Install tools
         command: brew install gcc packer qemu
+    - run: packer --help
