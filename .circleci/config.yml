@@ -11,6 +11,7 @@ jobs:
     executor: vm
     shell: /bin/bash --login -eo pipefail 
     steps:
+    - run: uname -a
     - run:
         name: Installing development tools
         command: sudo apt-get install build-essential
@@ -23,10 +24,13 @@ jobs:
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
         name: Installing qemu
-        command: sudo apt-get install qemu
         no_output_timeout: 60m
+        command: sudo apt-get install qemu
     - run:
         name: Installing packer
-        command: brew install packer
         no_output_timeout: 60m
-    - run: packer --help
+        command: brew install packer
+    - run:
+        name: Building Image
+        command: |
+          rake packer:build:qemu-image-alpine
