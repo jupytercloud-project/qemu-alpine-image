@@ -9,6 +9,7 @@ executors:
 jobs:
   build:
     executor: vm
+    shell: /bin/bash --login -eo pipefail 
     steps:
     - run:
         name: Install dev tools
@@ -22,5 +23,5 @@ jobs:
           echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
     - run:
         name: Install tools
-        shell: /bin/bash --login -eo pipefail 
+
         command: brew install gcc packer qemu
