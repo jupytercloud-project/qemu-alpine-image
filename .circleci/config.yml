@@ -28,7 +28,7 @@ jobs:
                  --detach \
                  --interactive \
                  --rm \
-                 --volume ${VOLUME}
+                 --volume ${VOLUME} \
                  ${IMAGE} /bin/bash
           docker exec ${IMAGE_NAME} \
                  /bin/bash -c 'ls -alFhR'
