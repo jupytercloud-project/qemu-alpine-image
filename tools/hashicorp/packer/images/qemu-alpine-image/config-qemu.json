@@ -19,14 +19,15 @@
         [ "-chardev", "socket,id=monitor,path=run/monitor.sock,server,nowait" ],
         [ "-monitor", "chardev:monitor" ],
         [ "-chardev", "socket,id=serial0,path=run/console.sock,server,nowait" ],
-        [ "-serial", "chardev:serial0" ]
+        [ "-serial", "chardev:serial0" ],
+        [ "-writeconfig", "{{ user `project_directory` }}/run/vm.cfg" ]
       ],
 
-      "vm_name": "{{user `image_name_base`}}-{{user `alpine_version`}}.{{user `disk_format`}}",
+      "vm_name": "{{user `image_name_base`}}-{{user `version`}}.{{user `disk_format`}}",
 
       "iso_checksum_type": "sha512",
-      "iso_checksum": "{{user `alpine_iso_sha512`}}",
-      "iso_url": "{{user `alpine_mirror`}}/alpine/{{user `alpine_branch`}}/releases/{{user `alpine_arch`}}/{{user `alpine_iso`}}",
+      "iso_checksum": "{{user `sha512`}}",
+      "iso_url": "{{user `mirror`}}/alpine/{{user `branch`}}/releases/{{user `arch`}}/{{user `iso`}}",
 
       "vnc_port_min": "6000",
 
@@ -44,7 +45,7 @@
         "<wait20>",
         "root<enter><wait>",
         "ifconfig eth0 up && udhcpc -i eth0<enter><wait5>",
-        "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine-installer.sh -O - | sh -s -- '{{ user `tmp_size`}}' '{{ .HTTPIP }}:{{ .HTTPPort }}' '{{user `alpine_mirror`}}'<enter>"
+        "wget http://{{ .HTTPIP }}:{{ .HTTPPort }}/alpine-installer.sh -O - | sh -s -- '{{ user `tmp_size`}}' '{{ .HTTPIP }}:{{ .HTTPPort }}' '{{user `mirror`}}'<enter>"
       ],
 
       "communicator": "ssh",
