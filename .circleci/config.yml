@@ -10,7 +10,7 @@ jobs:
   build:
     executor: vm
     shell: /bin/bash --login -eo pipefail
-    envionment:
+    environment:
       DKR: https://github.com/jupytercloud-project/build-container/releases/download/0.0.1/jupytercloud-project_build-container_latest.dkr
     steps:
     - checkout
