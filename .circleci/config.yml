@@ -9,32 +9,14 @@ executors:
 jobs:
   build:
     executor: vm
-    shell: /bin/bash --login -eo pipefail 
+    shell: /bin/bash --login -eo pipefail
+    envionment:
+      DKR: https://github.com/jupytercloud-project/build-container/releases/download/0.0.1/jupytercloud-project_build-container_latest.dkr
     steps:
     - checkout
-    - run: lsb_release -a
     - run:
-        name: Installing qemu
-        no_output_timeout: 60m
-        command: sudo apt-get install qemu
+        name: Pulling build container
+        command: curl --location ${DKR} | docker load
     - run:
-        name: Installing development tools
-        command: sudo apt-get install build-essential
-    - run:
-        name: Installing Brew
-        command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-    - run:
-        name: Add brew to the PATH
-        command: |
-          echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bash_profile
-    - run:
-        name: Installing packer
-        no_output_timeout: 60m
-        command: brew install packer
-    - run:
-        name: Installing Ruby dependencies
-        command: bundle install
-    - run:
-        name: Building the image
-        no_output_timeout: 60m
-        command: rake packer:build:qemu-alpine-image
+        name: Running build container
+        command: docker run -it jupytercloud-project/build-container:latest
