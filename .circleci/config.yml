@@ -12,6 +12,9 @@ jobs:
     shell: /bin/bash --login -eo pipefail
     environment:
       DKR: https://github.com/jupytercloud-project/build-container/releases/download/0.0.1/jupytercloud-project_build-container_latest.dkr
+      IMAGE_NAME: build_container
+      IMAGE: jupytercloud-project/build-container:latest
+      VOLUME: '.:/src'
     steps:
     - checkout
     - run:
@@ -19,4 +22,14 @@ jobs:
         command: curl --location ${DKR} | docker load
     - run:
         name: Running build container
-        command: docker run -it jupytercloud-project/build-container:latest
+        command: |
+          docker run \
+                 --name ${IMAGE_NAME} \
+                 --detach \
+                 --interactive \
+                 --rm \
+                 --volume ${VOLUME}
+                 ${IMAGE} /bin/bash
+          docker exec ${IMAGE_NAME} \
+                 /bin/bash -c 'ls -alFhR'
+          
