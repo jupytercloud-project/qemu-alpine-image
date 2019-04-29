@@ -19,7 +19,7 @@ jobs:
     - run:
         name: "Define environment variables"
         command: |
-          echo 'export VOLUME=${CIRCLE_WORKING_DIRECTORY}:/src' >> ${BASH_ENV}
+          echo 'export VOLUME=/home/circleci/project:/src' >> ${BASH_ENV}
     - run:
         name: Pulling build container
         command: curl --location ${DKR} | docker load
