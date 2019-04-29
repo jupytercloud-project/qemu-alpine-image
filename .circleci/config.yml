@@ -14,9 +14,12 @@ jobs:
       DKR: https://github.com/jupytercloud-project/build-container/releases/download/0.0.1/jupytercloud-project_build-container_latest.dkr
       IMAGE_NAME: build_container
       IMAGE: jupytercloud-project/build-container:latest
-      VOLUME: '.:/src'
     steps:
     - checkout
+    - run:
+        name: "Define environment variables"
+        command: |
+          echo 'export VOLUME=${CIRCLE_WORKING_DIRECTORY}:/src' >> ${BASH_ENV}
     - run:
         name: Pulling build container
         command: curl --location ${DKR} | docker load
