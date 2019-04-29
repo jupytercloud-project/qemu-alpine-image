@@ -17,14 +17,14 @@ jobs:
     steps:
     - checkout
     - run:
-        name: "Define environment variables"
+        name: "Defining environment variables"
         command: |
           echo 'export VOLUME=/home/circleci/project:/src' >> ${BASH_ENV}
     - run:
-        name: Pulling build container
+        name: "Pulling build container"
         command: curl --location ${DKR} | docker load
     - run:
-        name: Running build container
+        name: "Running build container"
         command: |
           docker run \
                  --name ${IMAGE_NAME} \
@@ -33,6 +33,7 @@ jobs:
                  --rm \
                  --volume ${VOLUME} \
                  ${IMAGE} /bin/bash
-          docker exec ${IMAGE_NAME} \
+          docker exec \
+                 ${IMAGE_NAME} \
                  /bin/bash -c 'ls -alFhR'
           
