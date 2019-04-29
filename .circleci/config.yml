@@ -35,5 +35,5 @@ jobs:
                  ${IMAGE} /bin/bash
           docker exec \
                  ${IMAGE_NAME} \
-                 /bin/bash -c 'ls -alFhR'
+                 /bin/bash -c 'ls -alFhR /src'
           
