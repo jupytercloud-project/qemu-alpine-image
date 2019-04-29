@@ -35,5 +35,8 @@ jobs:
                  ${IMAGE} /bin/bash
           docker exec \
                  ${IMAGE_NAME} \
-                 /bin/bash -c 'ls -alFhR /src'
-          
+                 /bin/bash -c 'ls -alFhR /src/tools/hashicorp/packer/images/qemu-alpine-image'
+          docker exec \
+                 ${IMAGE_NAME} \
+                 src/tools/hashicorp/packer/images/qemu-alpine-image/build.bash
+
