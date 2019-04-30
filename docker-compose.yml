@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  
+  build_container:
+    container_name: build_container
+    build:
+      context: https://github.com/jupytercloud-project/build-container.git
+    ports:
+    - "6000:6020"
+    volumes:
+    - .:/src
+    command: /bin/bash /src/tools/hashicorp/packer/images/qemu-image-alpine/build.bash
