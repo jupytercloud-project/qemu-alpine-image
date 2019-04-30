@@ -4,9 +4,10 @@ services:
   
   build_container:
     container_name: build_container
-    build:
-      #context: https://github.com/jupytercloud-project/build-container.git
-      image: jupytercloud-project/build-container:latest
+    image: jupytercloud-project/build-container:latest
+#    build:
+#      context: https://github.com/jupytercloud-project/build-container.git
+
     ports:
     - "127.0.0.1:6000-6020:6000-6020"
     volumes:
