@@ -29,7 +29,9 @@
       "iso_checksum": "{{user `sha512`}}",
       "iso_url": "{{user `mirror`}}/alpine/{{user `branch`}}/releases/{{user `arch`}}/{{user `iso`}}",
 
+      "vnc_bind_address": "0.0.0.0",
       "vnc_port_min": "6000",
+      "vnc_port_max": "6020",
 
       "disk_size": "{{user `disk_size`}}",
       "format": "{{user `disk_format`}}",
