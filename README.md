@@ -19,5 +19,5 @@
 # cd /tmp
 # git clone https://github.com/jupytercloud-project/qemu-alpine-image.git
 # cd qemu-alpine-image
-# /bin/bash /src/tools/hashicorp/packer/images/qemu-alpine-image/build.bash
+# docker-compose up
 ```
