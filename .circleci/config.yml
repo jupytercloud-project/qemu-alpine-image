@@ -25,15 +25,15 @@ jobs:
         name: "Running build container"
         command: |
           docker-compose up
-      - run:
-          name: "Publishing release on GitHub"
-          command: |
-            go get ${GHR} && \
-            VERSION=${RELEASE_VERSION} \
-            ghr -t ${GITHUB_TOKEN} \
-                -u ${CIRCLE_PROJECT_USERNAME} \
-                -r ${CIRCLE_PROJECT_REPONAME} \
-                -c ${CIRCLE_SHA1} \
-                -delete \
-                ${RELEASE_VERSION} \
-                ${ARTIFACT_DIR}/
+    - run:
+        name: "Publishing release on GitHub"
+        command: |
+          go get ${GHR} && \
+          VERSION=${RELEASE_VERSION} \
+          ghr -t ${GITHUB_TOKEN} \
+              -u ${CIRCLE_PROJECT_USERNAME} \
+              -r ${CIRCLE_PROJECT_REPONAME} \
+              -c ${CIRCLE_SHA1} \
+              -delete \
+              ${RELEASE_VERSION} \
+              ${ARTIFACT_DIR}/
