@@ -7,7 +7,9 @@ services:
     build:
       context: https://github.com/jupytercloud-project/build-container.git
     ports:
-    - "6000:6020"
+    - "127.0.0.1:6000-6020:6000-6020"
     volumes:
     - .:/src
+    - ./packer_cache:/packer_cache
+    - ./qemu-registry:/qemu-registry
     command: /bin/bash /src/tools/hashicorp/packer/images/qemu-image-alpine/build.bash
