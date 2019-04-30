@@ -20,9 +20,6 @@ jobs:
     - run:
         name: "Define environment variables"
         command: |
-          echo 'export IMAGE_TAG=latest' >> ${BASH_ENV}
-          echo 'export IMAGE_NAME=${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}:${IMAGE_TAG}' >> ${BASH_ENV}
-          echo 'export ARTIFACT_NAME=${CIRCLE_PROJECT_REPONAME}' >> ${BASH_ENV}
           echo 'export RELEASE_VERSION=0.0.1' >> ${BASH_ENV}
     - run:
         name: "Running build container"
