@@ -44,6 +44,7 @@
 
       "http_directory": "{{user `project_directory`}}/http",
 
+      "boot_wait": "{{ user `boot_wait` }}",
       "boot_command": [
         "root<enter><wait>",
         "ifconfig eth0 up && udhcpc -i eth0<enter><wait5>",
