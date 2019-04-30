@@ -14,7 +14,7 @@
 bash-4.4# /bin/bash /src/tools/hashicorp/packer/images/qemu-alpine/image/build.sh
 # docker stop $(docker ps -aqf "name=build_container")
 ```
-### DEV (qemu accelration)
+### DEV (qemu acceleration: kvm, hvf)
 
 ```bash
 # cd /tmp
