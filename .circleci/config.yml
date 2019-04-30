@@ -15,12 +15,17 @@ jobs:
       GHR: github.com/tcnksm/ghr
     steps:
     - checkout
-    - attach_workspace:
-        at: ./qemu-registry
+#    - attach_workspace:
+#        at: ./qemu-registry
     - run:
         name: "Define environment variables"
         command: |
           echo 'export RELEASE_VERSION=0.0.1' >> ${BASH_ENV}
+    - run:
+        name: "Fetching build container image"
+        command: |
+          DKR=https://github.com/jupytercloud-project/build-container/releases/download/0.0.1/jupytercloud-project_build-container_latest.dkr
+          curl --location ${DKR} | docker load
     - run:
         name: "Running build container"
         command: |
