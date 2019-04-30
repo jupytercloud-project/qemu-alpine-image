@@ -9,7 +9,9 @@ latest_releases='latest-releases.yaml'
 alpine_releases="${alpine_mirror}/alpine/latest-stable/releases/x86_64/${latest_releases}"
 
 function ::Build.prepare() {
-  mkdir -p ${packer_project}/run
+  rm -Rf "${qemu_output}"
+  mkdir -p "${packer_project}/run"
+  mkdir -p "${qemu_registry}"
 }
 
 function ::Facts.fetch() { 
@@ -29,8 +31,8 @@ function ::AlpineRelease::Metadata.fetch() {
   > ${packer_project}/run/release.json
 }
 function ::Packer.build() {
-  PACKER_LOG=1
-  PACKER_LOG_PATH=${packer_log_path}
+  #PACKER_LOG_PATH=${packer_log_path} \
+  PACKER_LOG=1 \
   packer build \
     -var-file ${packer_project}/run/facts.json \
     -var-file ${packer_project}/run/release.json \
