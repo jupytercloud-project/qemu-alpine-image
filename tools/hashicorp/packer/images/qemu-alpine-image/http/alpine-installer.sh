@@ -104,19 +104,23 @@ function disk_install {
 # cf https://wiki.alpinelinux.org/wiki/Bootloaders
 #
 function disk_bootloader {
-  mkdir -p "${ROOT}/boot/grub"
-  local grub_cfg='/boot/grub/grub.cfg'
+  local grub_dir='/boot/grub'
+  local grub_cfg="${grub_dir}/grub.cfg"
   local grub_cfg_esh="${grub_cfg}.esh"
+
+  for dir in "${ROOT}" '/tmp'; do
+    mkdir -p "${dir}${grub_dir}"
+  done
   #
   # fetch the config template
   #
   wget "${SRV_HTTP}/data${grub_cfg_esh}" \
-       -O "/tmp/${grub_cfg_esh}"
+       -O "/tmp${grub_cfg_esh}"
   #
   # render the config template
   #
-  esh -o ${grub_cfg} \
-      ${grub_cfg_esh} \
+  esh -o "${ROOT}${grub_cfg}" \
+      "/tmp${grub_cfg_esh}" \
       ALPINE_RELEASE="${ALPINE_RELEASE}" \
       GRUB_LVM_ROOT="${GRUB_LVM_ROOT}" \
       LVM_ROOT="${LVM_ROOT}"
