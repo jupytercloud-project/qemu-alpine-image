@@ -12,4 +12,4 @@ services:
     - .:/src
     - ./packer_cache:/packer_cache
     - ./qemu-registry:/qemu-registry
-    command: /bin/bash /src/tools/hashicorp/packer/images/qemu-image-alpine/build.bash
+    command: /bin/bash /src/tools/hashicorp/packer/images/qemu-alpine-image/build.bash
