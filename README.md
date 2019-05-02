@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/jupytercloud-project/qemu-alpine-image.svg?style=shield)](https://circleci.com/gh/jupytercloud-project/qemu-alpine-image)
+
 # qemu-alpine-image
 
 ## Build
