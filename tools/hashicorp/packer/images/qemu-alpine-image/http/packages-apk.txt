@@ -1,6 +1,7 @@
 esh
 bash
 parted
+sgdisk
 grub
 grub-bios
 xfsprogs
@@ -12,3 +13,4 @@ sed
 findutils
 util-linux
 jq
+blkid
